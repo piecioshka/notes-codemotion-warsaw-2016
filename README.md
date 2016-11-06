@@ -1,5 +1,7 @@
 # notes-codemotion-warsaw-2016
 
+> :book: Notes from conference: Codemotion Warsaw 2016
+
 ## 1. "Navigating all the knowledge" James Weaver
 
 Prelekcja typu Keynote. Ten typ prelekcja jest szczególny podczas
