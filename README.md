@@ -30,15 +30,14 @@ Limit urządzeń podłączonych to 31 sztuk.
 Dziwnie blisko 2 ^^ 6 - jest to ograniczenie hardware-owe.
 
 Prelegent opowiedział o sterownikach do protokołu USB.
-USB device  = UDC + USB gadget
-UDC drive - for USB device controller
-Phonet - Nokia 100 protocol
 
-Projekt prelegenta do lekkiej automatyzacji USB gadgetów:
-https://github.com/kopasiak/gt
+* USB device  = UDC + USB gadget
+* UDC drive - for USB device controller
+* Phonet - Nokia 100 protocol
 
-Testowa aplikacja prelegenta:
-https://github.com/kopasiak/simple_usb_chat
+Projekt prelegenta do lekkiej automatyzacji USB gadgetów: https://github.com/kopasiak/gt
+
+Testowa aplikacja prelegenta: https://github.com/kopasiak/simple_usb_chat
 
 ## 3. "Let’s demystify IoT for Java developers (with a drone!)" Ville Ingman
 
@@ -162,12 +161,12 @@ TData
             "module": "commonjs",
             "outDir": "output",
             "allowJs": true,
-            "target": "es2015"
+            "target": "es2015",
     
             "noImplicitAny": true,
             "noImplicitThis": true,
             "sourceMap": true,
-            "inlineSourceMap": true # top of JS file
+            "inlineSourceMap": true
         }
     }
     ```
@@ -188,14 +187,12 @@ TData
     node_modules/.bin/tsc # bez parametrów
     ```
 
-Nie musisz używać TS do małego projektu.
-Warto używać do dużego.
+**Nie musisz używać TS do małego projektu. Warto używać do dużego.**
 
-Lepsze doświadczenia z developowania.
+Korzystanie z TypeScript daje lepsze doświadczenia z developowania.
 
-http://bit.ly/startTypeScript - blog post autora
-
-http://bit.ly/codemotion-typescript
+* http://bit.ly/startTypeScript - blog post autora
+* http://bit.ly/codemotion-typescript
 
 Więcej: http://warsaw2016.codemotionworld.com/wp-content/themes/event/detail-talk.php?detail=4387
 
@@ -247,11 +244,11 @@ Więcej: http://warsaw2016.codemotionworld.com/wp-content/themes/event/detail-ta
 
 "regex are wildcards on steroids"
 
-W regexpach chodzi o wzorzec
+W regexpach chodzi o wzorzec!
 
 ### whitelisting vs blacklisting
 
-Jak działają?
+#### Jak działają?
 
 * tworzenie wzorca
 * potem wyrażenia regularnego
@@ -259,13 +256,13 @@ Jak działają?
 * function
 * no i mamy wynik!
 
-jakie pytania?
+#### Jakie pytania?
 
 * czy pasuje?
 * ile dopasować?
 * jakie dopasowania?
 
-regex engines
+#### Regex engines
 
 * posix
 * jakarta
@@ -284,57 +281,55 @@ regex engines
 * henry spences regex
 * glib/gregex
 
-terminologia
+#### terminologia
 
 * regular expression
 * delimiters
 * modifiers
 
-basic syntax
+#### basic syntax
 
-* literals: Aa1
-* wildcard: .
-* quantifiers: ?+*{#}
-* character ranges [..]
-* grouping and alternation: (...|...)
-* anchors ^..,$
-* shorthand characters code \w\d\s
-* modifiers: gmsi
+* literals: `Aa1`
+* wildcard: `.`
+* quantifiers: `?+*{#}`
+* character ranges `[..]`
+* grouping and alternation: `(...|...)`
+* anchors `^...$`
+* shorthand characters code `\w\d\s`
+* modifiers: `gmsi`
 
-Zasięg działają zgodnie z tablicą ASCII, np. a-z - zadziała, ale z-a już nie
+Zasięg działają zgodnie z tablicą ASCII, np. `a-z` - zadziała, ale `z-a` już nie.
 
 Testowaliśmy wyrażenie regularne do definicji koloru w formacie RGB pisany szesnastkowo np. #ab1234
-http://regexper.com/
+
+Korzystaliśmy z narzędzia http://regexper.com/ - które tłumaczy jak działa dany regexp.
 
 ### Tips & tricks
 
-(?:&lt;expr&gt;) - nie bierzemy pod uwagę wszystkich dopasowań
-
-[^&lt;chars*gt;] - negatywna klasa
-
+* `(?:<expr>)` - nie bierzemy pod uwagę wszystkich dopasowań
+* `[^<chars>]` - negatywna klasa
 * backtracing - przeszukiwanie wzorca od końca poprzedniego dopasowania
-
 * reluctant quantifiers
+* `\b` nie można łapać bo to nie jest znak
 
-\b nie można łapać bo to nie jest znak
+**Na początku wzorca zawsze podaje się dłuższe wzorce, bo inaczej te krótsze od razu znajdą krótszą frazę.**
 
-na początku wzorca zawsze podaje się dłuższe wzorce, bo inaczej te krótsze od razu znajdą krótszą frazę
-
+```
 déjà vu [\w ]+  -------- fail on english (en)
 déjà vu [\w ]+  -------- success on french (fr)
+```
 
-[(] nie potrzebuje już eskejpowania, bo pisany normalnie potrzebuje \(
+* `[(]` nie potrzebuje już eskejpowania, bo pisany normalnie potrzebuje \(
+* `\\\\` - matching literal backslash
 
-\\\\ matching literal backslash
+#### regex + modifier = engine behaviour
 
-regex + modifier = engine behaviour
+* settings (`?i`)
+* unsettings (`?-i`)
+* combined (`?im-sx`)
+* apply to subpattern non-capturing (`?i:subp`)
 
-* settings (?i)
-* unsettings (?-i)
-* combined (?im-sx)
-* apply to subpattern non-capturing (?i:subp)
-
-advanced feature
+#### advanced feature
 
 * look around
 * name sb-matches
